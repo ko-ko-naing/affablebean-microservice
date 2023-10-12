@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html th:fragment="layout(main)" lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css"
+th:href="@{/bootstrap/css/bootstrap.min.css}">
+
+<link rel="stylesheet" href="../../static/bootstrap/css/app.css"
+      th:href="@{/bootstrap/css/app.css}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<section id="head">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="offset-10 col-md-3">
+                <h3><img th:src="@{/images/cart.gif}" alt="cart">
+                <span th:text="${cartSize}"></span>
+                </h3>
+            </div>
+        </div>
+
+        <a th:href="@{'/ui/home'}">
+        <img src="../../static/images/logo.png" alt="" id="logo"
+        th:src="@{/images/logo.png}">
+
+        <img src="../../static/images/logoText.png.png" alt="" id="logoText"
+             th:src="@{/images/logoText.png}">
+
+        <img src="../../static/images/stalk.png.png" alt="" id="stalk"
+             th:src="@{/images/stalk.png}">
+        </a>
+    </div>
+
+</section>
+
+<div th:replace="${main}"></div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html th:replace="layout/masterLayout :: layout(~{::main})"  lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-4">
+                <a th:href="@{'/ui/products?id=1'}" class="btn btn-primary w-100 p-3 mb-3">Dairy</a><br>
+                <a th:href="@{'/ui/products?id=2'}" class="btn btn-danger w-100 p-3 mb-3">Meat</a><br>
+                <a th:href="@{'/ui/products?id=3'}" class="btn btn-warning w-100 p-3 mb-3">Bakery</a><br>
+                <a th:href="@{'/ui/products?id=4'}" class="btn btn-success w-100 p-3  mb-3">Fruit &#38; Veg</a><br>
+            </div>
+            <div class="col-md-8">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="pro : ${products}">
+                        <td>
+                            <img th:src="@{'/images/products/'+${pro.name}+'.png'}" alt="">
+                        </td>
+                        <td th:text="${pro.name}"></td>
+                        <td th:text="${pro.description}"></td>
+                        <td th:text="${'$'+pro.price}"></td>
+                        <td><a th:href="@{'/ui/add-cart?id='+${pro.id}}" class="btn btn-success text-white">Add</a></td>
+                    </tr>
+                    </tbody>
+                    @{'/ui/add-cart?id='+${pro.id}}
+                </table>
+            </div>
+        </div>
+        <a th:href="@{'/ui/home'}" class="btn btn-info float-end p-3  mb-3">Home</a><br>
+    </div>
+</main>
+</body>
+</html>
